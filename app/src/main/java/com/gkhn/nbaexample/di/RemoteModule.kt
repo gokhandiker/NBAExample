@@ -2,6 +2,7 @@ package com.gkhn.nbaexample.di
 
 import com.gkhn.nbaexample.data.remote.NbaService
 import com.gkhn.nbaexample.data.repository.PlayerRepositoryImpl
+import com.gkhn.nbaexample.domain.usecase.GetAllPlayersUseCaseImpl
 import com.gkhn.nbaexample.ui.MainViewModel
 import com.gkhn.nbaexample.util.Const.Companion.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -28,8 +29,10 @@ val appModule = module {
 
     factory { PlayerRepositoryImpl(nbaService = get()) }
 
+    factory { GetAllPlayersUseCaseImpl(playerRepositoryImpl = get()) }
 
-    viewModel { MainViewModel(playerRepositoryImpl = get()) }
+
+    viewModel { MainViewModel(getAllPlayersUseCaseImpl = get()) }
 }
 
 

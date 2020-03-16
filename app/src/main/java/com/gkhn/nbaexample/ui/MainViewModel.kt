@@ -3,13 +3,12 @@ package com.gkhn.nbaexample.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.gkhn.nbaexample.data.Output
-import com.gkhn.nbaexample.data.datamodel.AllPlayersNetworkModel
-import com.gkhn.nbaexample.data.repository.PlayerRepositoryImpl
 import com.gkhn.nbaexample.domain.domainmodel.PlayerDomainModel
+import com.gkhn.nbaexample.domain.usecase.GetAllPlayersUseCaseImpl
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class MainViewModel(val playerRepositoryImpl: PlayerRepositoryImpl) : ViewModel(),CoroutineScope {
+class MainViewModel(val getAllPlayersUseCaseImpl: GetAllPlayersUseCaseImpl) : ViewModel(),CoroutineScope {
 
     private val job = Job()
 
@@ -21,7 +20,7 @@ class MainViewModel(val playerRepositoryImpl: PlayerRepositoryImpl) : ViewModel(
 
         launch {
             val result = withContext(Dispatchers.IO) {
-                playerRepositoryImpl.getAllPlayers()
+                getAllPlayersUseCaseImpl.invoke()
             }
 
             when(result) {
