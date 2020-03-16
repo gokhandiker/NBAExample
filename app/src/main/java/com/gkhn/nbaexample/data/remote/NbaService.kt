@@ -1,6 +1,6 @@
 package com.gkhn.nbaexample.data.remote
 
-import com.gkhn.nbaexample.data.datamodel.Player
+import com.gkhn.nbaexample.data.datamodel.AllPlayersNetworkModel
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
@@ -8,6 +8,6 @@ import retrofit2.http.GET
 interface NbaService {
 
     @GET("players")
-    fun getAllPlayers() : Deferred<List<Player>>
+    fun getAllPlayers() : Deferred<AllPlayersNetworkModel>
 
 }
