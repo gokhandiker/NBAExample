@@ -3,7 +3,7 @@ package com.gkhn.nbaexample.data.datamodel
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class PlayerNetworkModel (
+data class PlayerNetworkModel(
 
     @SerializedName("id")
     @Expose
@@ -29,30 +29,33 @@ data class PlayerNetworkModel (
     @SerializedName("weight_pounds")
     @Expose
     val weightPounds: Int
-)
+){
+    data class TeamNetwork (
 
-data class TeamNetwork (
+        @SerializedName("id")
+        @Expose
+        val id: Int,
+        @SerializedName("abbreviation")
+        @Expose
+        val abbreviation: String,
+        @SerializedName("city")
+        @Expose
+        val city: String,
+        @SerializedName("conference")
+        @Expose
+        val conference: String,
+        @SerializedName("division")
+        @Expose
+        val division: String,
+        @SerializedName("full_name")
+        @Expose
+        val fullName: String,
+        @SerializedName("name")
+        @Expose
+        val name: String
+    )
 
-    @SerializedName("id")
-    @Expose
-    val id: Int,
-    @SerializedName("abbreviation")
-    @Expose
-    val abbreviation: String,
-    @SerializedName("city")
-    @Expose
-    val city: String,
-    @SerializedName("conference")
-    @Expose
-    val conference: String,
-    @SerializedName("division")
-    @Expose
-    val division: String,
-    @SerializedName("full_name")
-    @Expose
-    val fullName: String,
-    @SerializedName("name")
-    @Expose
-    val name: String
-)
+}
+
+
 
