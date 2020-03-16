@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.playerList.observe(
             this,
             Observer {
-                Log.e("observer",""+it.data)
+                Log.e("observer",""+it)
             }
         )
 

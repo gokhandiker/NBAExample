@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.gkhn.nbaexample.data.Output
 import com.gkhn.nbaexample.data.datamodel.AllPlayersNetworkModel
 import com.gkhn.nbaexample.data.repository.PlayerRepositoryImpl
+import com.gkhn.nbaexample.domain.domainmodel.PlayerDomainModel
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -14,7 +15,7 @@ class MainViewModel(val playerRepositoryImpl: PlayerRepositoryImpl) : ViewModel(
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
 
-    val playerList = MutableLiveData<AllPlayersNetworkModel>()
+    val playerList = MutableLiveData<List<PlayerDomainModel>>()
 
     fun getAllPlayers() {
 
