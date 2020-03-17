@@ -1,9 +1,6 @@
 package com.gkhn.nbaexample.data.remote
 
-import com.gkhn.nbaexample.data.datamodel.AllPlayersNetworkModel
-import com.gkhn.nbaexample.data.datamodel.AllTeamsNetworkModel
-import com.gkhn.nbaexample.data.datamodel.PlayerNetworkModel
-import com.gkhn.nbaexample.data.datamodel.TeamNetworkModel
+import com.gkhn.nbaexample.data.datamodel.*
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,4 +17,12 @@ interface NbaService {
     @GET("teams")
     fun getAllTeams(): Deferred<AllTeamsNetworkModel>
 
+    @GET("teams/{id}")
+    fun getTeamWithId(@Path("id") id : Int) : Deferred<TeamNetworkModel>
+
+    @GET("games")
+    fun getAllGames() : Deferred<AllGamesNetworkModel>
+
+    @GET("games/{id}")
+    fun getGameWithId(@Path("id") id : Int) : Deferred<GameNetworkModel>
 }
