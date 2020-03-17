@@ -20,6 +20,15 @@ class PlayerRepositoryImpl( private val nbaService: NbaService) : PlayerReposito
         }
     }
 
+    override suspend fun getPlayerWithId(id: Int): Output<PlayerDomainModel> {
+        return try {
+            val result = nbaService.getPlayerWithId(id).await()
+            Output.Success(result.toDomainModel())
+        } catch (ex: Exception) {
+            Output.Error(ex)
+        }
+    }
+
     private fun mapData(data: List<PlayerNetworkModel>): List<PlayerDomainModel> {
         var list : ArrayList<PlayerDomainModel> = arrayListOf()
         data.forEach{

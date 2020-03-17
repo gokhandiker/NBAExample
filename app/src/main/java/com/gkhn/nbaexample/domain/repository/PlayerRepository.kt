@@ -4,5 +4,7 @@ import com.gkhn.nbaexample.data.Output
 import com.gkhn.nbaexample.domain.domainmodel.PlayerDomainModel
 
 interface PlayerRepository {
-  suspend  fun getAllPlayers() : Output<List<PlayerDomainModel>>
+  suspend fun getAllPlayers() : Output<List<PlayerDomainModel>>
+
+  suspend fun getPlayerWithId(id : Int) : Output<PlayerDomainModel>
 }

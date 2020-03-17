@@ -2,9 +2,11 @@ package com.gkhn.nbaexample.di
 
 import com.gkhn.nbaexample.data.remote.NbaService
 import com.gkhn.nbaexample.data.repository.PlayerRepositoryImpl
-import com.gkhn.nbaexample.domain.usecase.GetAllPlayersUseCaseImpl
+import com.gkhn.nbaexample.data.repository.TeamRepositoryImpl
+import com.gkhn.nbaexample.domain.usecase.getallplayers.GetAllPlayersUseCaseImpl
+import com.gkhn.nbaexample.domain.usecase.getallteams.GetAllTeamsUseCaseImpl
+import com.gkhn.nbaexample.domain.usecase.getplayerwithid.GetPlayerWithIdUseCaseImpl
 import com.gkhn.nbaexample.ui.MainViewModel
-import com.gkhn.nbaexample.util.Const.Companion.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.android.viewmodel.dsl.viewModel
@@ -28,11 +30,15 @@ val appModule = module {
 
 
     factory { PlayerRepositoryImpl(nbaService = get()) }
+    factory { TeamRepositoryImpl(nbaService = get()) }
 
-    factory { GetAllPlayersUseCaseImpl(playerRepositoryImpl = get()) }
+    factory { GetAllPlayersUseCaseImpl(playerRepositoryImpl = get())}
 
+    factory { GetPlayerWithIdUseCaseImpl(playerRepositoryImpl = get()) }
 
-    viewModel { MainViewModel(getAllPlayersUseCaseImpl = get()) }
+    factory { GetAllTeamsUseCaseImpl(teamRepositoryImpl = get()) }
+
+    viewModel { MainViewModel(getAllPlayersUseCaseImpl = get(), getPlayerWithIdUseCase = get(),getAllTeamUseCaseImpl = get()) }
 }
 
 
