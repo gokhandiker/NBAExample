@@ -7,3 +7,10 @@ example of the clean architecture
 * koin
 * retrofit
 * coroutines
+
+-- will be added
+
+-> Transition, SharedObjects
+-> Cache
+-> dataBinding
+-> firebase remote
