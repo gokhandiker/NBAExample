@@ -1,18 +1,16 @@
 # NBAExample
-example of the clean architecture
+ Example of The Clean Architecture with MVVM
 
 
 * Kotlin Clean Code
 * MVVM
-* koin
-* retrofit
-* coroutines
+* Koin
+* Retrofit
+* Coroutines
 
 -- will be added
 
--> Transition, SharedObjects
--> Cache
--> dataBinding
--> firebase remote
+* Cache
+* DataBinding
 
 
