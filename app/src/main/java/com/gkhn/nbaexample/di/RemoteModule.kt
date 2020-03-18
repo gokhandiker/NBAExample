@@ -1,5 +1,6 @@
 package com.gkhn.nbaexample.di
 
+import android.content.Context
 import com.gkhn.nbaexample.data.remote.NbaService
 import com.gkhn.nbaexample.data.repository.PlayerRepositoryImpl
 import com.gkhn.nbaexample.data.repository.TeamRepositoryImpl
@@ -9,6 +10,7 @@ import com.gkhn.nbaexample.domain.usecase.getplayerwithid.GetPlayerWithIdUseCase
 import com.gkhn.nbaexample.ui.MainViewModel
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.CallAdapter
@@ -22,7 +24,7 @@ val appModule = module {
 
     single {
         createWebService<NbaService>(
-            okHttpClient = createHttpClient(),
+            okHttpClient = createHttpClient(context = androidContext()),
             factory = RxJava2CallAdapterFactory.create(),
             baseUrl = "https://www.balldontlie.io/api/v1/"
         )
@@ -43,7 +45,7 @@ val appModule = module {
 
 
 /* Returns a custom OkHttpClient instance with interceptor. Used for building Retrofit service */
-fun createHttpClient(): OkHttpClient {
+fun createHttpClient(context: Context): OkHttpClient {
     val client = OkHttpClient.Builder()
     client.readTimeout(5 * 60, TimeUnit.SECONDS)
     return client.addInterceptor {

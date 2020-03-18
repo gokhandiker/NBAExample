@@ -11,6 +11,7 @@ import java.lang.Exception
 
 
 class PlayerRepositoryImpl( private val nbaService: NbaService) : PlayerRepository {
+
     override suspend fun getAllPlayers(): Output<List<PlayerDomainModel>> {
         return try {
             val result = nbaService.getAllPlayers().await()
